@@ -58,7 +58,7 @@ spec:
       spec:
         accessModes:
           - ReadWriteOnce
-        storageClassName: ebs
+        storageClassName: localblock
         resources:
           requests:
             storage: 0.5Gi
