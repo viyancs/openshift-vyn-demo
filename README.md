@@ -58,7 +58,7 @@ spec:
       spec:
         accessModes:
           - ReadWriteOnce
-        storageClassName: localblock
+        storageClassName: ocs-storagecluster-cephfs
         resources:
           requests:
             storage: 0.5Gi
