@@ -44,7 +44,7 @@ spec:
     - name: IMAGE
       value: $(params.IMAGE)
     - name : tls-verify
-      value: false
+      value: "false"
     workspaces:
     - name: source
       workspace: shared-workspace
