@@ -43,7 +43,7 @@ spec:
     params:
     - name: IMAGE
       value: $(params.IMAGE)
-    - name : tls-verify
+    - name: tls-verify
       value: "false"
     workspaces:
     - name: source
