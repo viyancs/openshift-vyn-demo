@@ -56,6 +56,8 @@ spec:
     workspaces:
     - name: source
       workspace: shared-workspace
+      persistentVolumeClaim:
+        claimName: vote-app-storage-claim
     runAfter:
     - build-image
   - name: update-deployment
