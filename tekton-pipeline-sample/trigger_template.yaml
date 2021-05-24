@@ -30,6 +30,8 @@ spec:
         value: $(tt.params.git-revision)
       - name: IMAGE
         value: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/$(tt.params.git-repo-name)
+      - name: TLSVERIFY
+        value: "false"
       workspaces:
       - name: shared-workspace
         volumeClaimTemplate:
