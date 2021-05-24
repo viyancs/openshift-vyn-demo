@@ -36,7 +36,7 @@ spec:
           spec:
             accessModes:
               - ReadWriteOnce
-            storageClassName: vote-app-storage-claim
+            storageClassName: ocs-storagecluster-cephfs
             resources:
               requests:
                 storage: 500Mi
