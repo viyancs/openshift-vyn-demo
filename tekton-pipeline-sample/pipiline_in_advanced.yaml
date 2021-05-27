@@ -82,9 +82,6 @@ spec:
       - name: ARGS
         value:
           - help
-    workspaces:
-    - name: output
-      workspace: shared-workspace
     runAfter:
     - unit-test
     - dependency-report
