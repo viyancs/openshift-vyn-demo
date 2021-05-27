@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: vote-app-storage-claim
-  namespace: pipeline-tutorial
+  namespace: pipelines-tutorial
 spec:
   accessModes:
     - ReadWriteOnce
