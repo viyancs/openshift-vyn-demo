@@ -37,14 +37,55 @@ spec:
     - name: revision
       value: $(params.git-revision)
   - name: code-analysis
-    steps:
-      - image: registry.redhat.io/ubi7/ubi-minimal
-        command:
-          - /bin/bash
-          - '-c'
-          - whoami
+    taskRef:
+      kind: ClusterTask
+      name: git-cli
+    params:
+      - name: BASE_IMAGE
+        value: 'alpine/git:latest'
+      - name: GIT_SCRIPT
+        value: |
+          git help
     runAfter:
     - fetch-repository
+  - name: dependency-report
+    taskRef:
+      kind: ClusterTask
+      name: git-cli
+    params:
+      - name: BASE_IMAGE
+        value: 'alpine/git:latest'
+      - name: GIT_SCRIPT
+        value: |
+          git help
+    runAfter:
+    - fetch-repository
+  - name: unit-test
+    taskRef:
+      kind: ClusterTask
+      name: git-cli
+    params:
+      - name: BASE_IMAGE
+        value: 'alpine/git:latest'
+      - name: GIT_SCRIPT
+        value: |
+          git help
+    runAfter:
+    - fetch-repository
+  - name: integration-test
+    taskRef:
+      kind: ClusterTask
+      name: git-cli
+    params:
+      - name: BASE_IMAGE
+        value: 'alpine/git:latest'
+      - name: GIT_SCRIPT
+        value: |
+          git help
+    runAfter:
+    - unit-test
+    - dependency-report
+    - code-analysis
   - name: build-image
     taskRef:
       name: buildah
