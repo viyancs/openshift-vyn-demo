@@ -39,58 +39,49 @@ spec:
   - name: code-analysis
     taskRef:
       kind: ClusterTask
-      name: git-cli
+      name: tkn
     params:
-      - name: BASE_IMAGE
-        value: 'alpine/git:latest'
-      - name: GIT_SCRIPT
-        value: |
-          git help
-    workspaces:
-    - name: output
-      workspace: shared-workspace
+      - name: tkn-image
+        value: gcr.io/tekton-releases/dogfooding/tkn
+      - name: ARGS
+        value:
+          - help
     runAfter:
     - fetch-repository
   - name: dependency-report
     taskRef:
       kind: ClusterTask
-      name: git-cli
+      name: tkn
     params:
-      - name: BASE_IMAGE
-        value: 'alpine/git:latest'
-      - name: GIT_SCRIPT
-        value: |
-          git help
-    workspaces:
-    - name: output
-      workspace: shared-workspace
+      - name: tkn-image
+        value: gcr.io/tekton-releases/dogfooding/tkn
+      - name: ARGS
+        value:
+          - help
     runAfter:
     - fetch-repository
   - name: unit-test
     taskRef:
       kind: ClusterTask
-      name: git-cli
+      name: tkn
     params:
-      - name: BASE_IMAGE
-        value: 'alpine/git:latest'
-      - name: GIT_SCRIPT
-        value: |
-          git help
-    workspaces:
-    - name: output
-      workspace: shared-workspace
+      - name: tkn-image
+        value: gcr.io/tekton-releases/dogfooding/tkn
+      - name: ARGS
+        value:
+          - help
     runAfter:
     - fetch-repository
   - name: integration-test
     taskRef:
       kind: ClusterTask
-      name: git-cli
+      name: tkn
     params:
       - name: BASE_IMAGE
         value: 'alpine/git:latest'
       - name: GIT_SCRIPT
         value: |
-          git help
+          help
     workspaces:
     - name: output
       workspace: shared-workspace
