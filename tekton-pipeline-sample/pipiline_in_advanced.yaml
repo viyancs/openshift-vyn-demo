@@ -47,7 +47,7 @@ spec:
         value: |
           git help
     workspaces:
-    - name: source
+    - name: output
       workspace: shared-workspace
     runAfter:
     - fetch-repository
@@ -62,7 +62,7 @@ spec:
         value: |
           git help
     workspaces:
-    - name: source
+    - name: output
       workspace: shared-workspace
     runAfter:
     - fetch-repository
@@ -77,7 +77,7 @@ spec:
         value: |
           git help
     workspaces:
-    - name: source
+    - name: output
       workspace: shared-workspace
     runAfter:
     - fetch-repository
@@ -92,7 +92,7 @@ spec:
         value: |
           git help
     workspaces:
-    - name: source
+    - name: output
       workspace: shared-workspace
     runAfter:
     - unit-test
