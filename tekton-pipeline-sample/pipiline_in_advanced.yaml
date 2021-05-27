@@ -77,11 +77,11 @@ spec:
       kind: ClusterTask
       name: tkn
     params:
-      - name: BASE_IMAGE
-        value: 'alpine/git:latest'
-      - name: GIT_SCRIPT
-        value: |
-          help
+      - name: tkn-image
+        value: gcr.io/tekton-releases/dogfooding/tkn
+      - name: ARGS
+        value:
+          - help
     workspaces:
     - name: output
       workspace: shared-workspace
