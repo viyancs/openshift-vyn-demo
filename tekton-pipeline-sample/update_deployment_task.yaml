@@ -27,4 +27,4 @@ spec:
       command: ["/bin/bash", "-c"]
       args:
         - |-
-          oc rollout retry deployment/$(inputs.params.deployment)
+          oc rollout retry dc/$(inputs.params.deployment)
