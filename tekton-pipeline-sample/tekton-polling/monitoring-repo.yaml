@@ -1,0 +1,22 @@
+apiVersion: polling.tekton.dev/v1alpha1
+kind: Repository
+metadata:
+  name: vote-ui-repository
+spec:
+  url: https://github.com/viyancs/pipelines-vote-ui.git
+  ref: master
+  frequency: 1m
+  type: github # can also be gitlab
+  pipelineRef:
+    name: build-and-deploy
+    params:
+    - name: sha
+      expression: commit.sha
+    - name: git-url
+      expression: commit.git_url
+    - name: git-revision
+      expression: commit.sha
+    - name: deployment-name
+      expression: commit.name
+    - name: IMAGE
+      expression: image-registry.openshift-image-registry.svc:5000/pipeline-tutorial/$(commit.name)
