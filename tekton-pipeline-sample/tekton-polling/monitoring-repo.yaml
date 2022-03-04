@@ -1,7 +1,7 @@
 apiVersion: polling.tekton.dev/v1alpha1
 kind: Repository
 metadata:
-  name: vote-ui-repository
+  name: vote-ui-git
 spec:
   url: https://github.com/viyancs/pipelines-vote-ui.git
   ref: master
@@ -10,13 +10,22 @@ spec:
   pipelineRef:
     name: build-and-deploy
     params:
-    - name: sha
-      expression: commit.sha
     - name: git-url
-      expression: commit.git_url
+      expression: "'https://github.com/viyancs/pipelines-vote-ui.git'"
     - name: git-revision
       expression: commit.sha
     - name: deployment-name
-      expression: commit.name
+      expression: "'pipelines-vote-ui'"
     - name: IMAGE
-      expression: image-registry.openshift-image-registry.svc:5000/pipeline-tutorial/$(commit.name)
+      expression: "'image-registry.openshift-image-registry.svc:5000/pipeline-tutorial/pipelines-vote-ui'"
+    workspaces:
+      - name: shared-workspace
+        volumeClaimTemplate:
+          spec:
+            accessModes:
+              - ReadWriteOnce
+            storageClassName: thin
+            resources:
+              requests:
+                storage: 500Mi
+        
