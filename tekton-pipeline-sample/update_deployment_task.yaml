@@ -22,3 +22,11 @@ spec:
               "image":"$(inputs.params.IMAGE)"
             }]
           }}}}'
+    - name: rollout-deployment
+      image: 'image-registry.openshift-image-registry.svc:5000/openshift/cli:latest'
+      command: 
+        - /bin/bash
+        - '-c'
+      args:
+        - |-
+          oc rollout restart deploy/$(inputs.params.deployment)
